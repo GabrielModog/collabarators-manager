@@ -1,0 +1,14 @@
+{
+  "name": "collaborators-mock-api",
+  "version": "1.0.0",
+  "description": "a simple mock to collaborators manager app",
+  "main": "index.js",
+  "author": "Gabriel Tavares <gabrielmodog@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "json-server --watch db.json --delay 300 --port 5000"
+  },
+  "dependencies": {
+    "json-server": "^0.16.1"
+  }
+}
