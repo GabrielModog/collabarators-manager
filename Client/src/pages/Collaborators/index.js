@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { Form } from '../../components/Form';
@@ -16,6 +16,7 @@ import api from '../../services';
 const Collaborators = () => {
 	const [roles, setRoles] = useState([]);
 	const history = useHistory();
+	const { id } = useParams();
 	const formRef = useRef(null);
 	const onSubmission = async data => {
 		try {
@@ -68,7 +69,7 @@ const Collaborators = () => {
 
 	return (
 		<Container>
-			<h1>Registrar Colaborador</h1>
+			{id ? <h1>Editar Colaborador</h1> : <h1>Registrar Colaborador</h1>}
 			<Row>
 				<Form onSubmit={onSubmission} ref={formRef}>
 					<Column>

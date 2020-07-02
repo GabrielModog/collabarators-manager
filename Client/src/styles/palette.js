@@ -3,6 +3,7 @@ export const Grey = {
 	200: '#99A6B4',
 	400: '#C4CADE',
 	500: '#FFFFFF',
+	600: '#6A6C7C',
 };
 export const Primary = { 0: '#A785DE', 200: '#846BFD', 400: '#3C3557' };
 export const Danger = { 0: '#FFEAE9', 200: '#FF7F7E', 400: '#672D2B' };

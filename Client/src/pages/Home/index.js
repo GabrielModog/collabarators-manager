@@ -7,8 +7,11 @@ import {
 	Column,
 	RegisterCollaborator,
 	RegisterRole,
+	RoleItem,
 	CollabItem,
 	RoleSide,
+	DeleteButton,
+	EditButton,
 } from '../style';
 import api from '../../services';
 
@@ -64,15 +67,29 @@ const Home = () => {
 						) : (
 							collaborators.map(collab => (
 								<CollabItem key={collab.id}>
-									<div>
-										<p>
-											<strong>{`${collab.name} ${collab.lastname}`}</strong>
-										</p>
-										<p>{collab.role}</p>
+									<div className="row">
+										<div>
+											<p>
+												<strong>{`${collab.name} ${collab.lastname}`}</strong>
+											</p>
+											<p>{collab.role}</p>
+										</div>
+										<div>
+											<p>{collab.birthday}</p>
+											<p>R$ {collab.salary}</p>
+										</div>
 									</div>
-									<div>
-										<p>{collab.birthday}</p>
-										<p>R$ {collab.salary}</p>
+
+									<div className="tools">
+										<EditButton
+											type="button"
+											onClick={() => history.push(`/colaborador/${collab.id}`)}
+										>
+											<i className="far fa-edit" />
+										</EditButton>
+										<DeleteButton type="button">
+											<i className="far fa-trash-alt" />
+										</DeleteButton>
 									</div>
 								</CollabItem>
 							))
@@ -82,13 +99,18 @@ const Home = () => {
 				<Sides>
 					<h3>Cargos</h3>
 					<RoleSide>
-						<ul>
+						<div>
 							{roles === null ? (
 								<p>Carregando...</p>
 							) : (
-								roles.map(role => <li key={role.id}>{role.name}</li>)
+								roles.map(role => (
+									<RoleItem key={role.id} to={`/cargo/${role.id}`}>
+										{role.name}
+										<i className="far fa-edit" />
+									</RoleItem>
+								))
 							)}
-						</ul>
+						</div>
 					</RoleSide>
 				</Sides>
 			</Row>

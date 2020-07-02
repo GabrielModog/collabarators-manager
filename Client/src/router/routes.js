@@ -8,7 +8,9 @@ import Roles from '../pages/Roles';
 const authRoutes = [
 	{ path: '/', component: Home },
 	{ path: '/colaborador', component: Collaborators },
+	{ path: '/colaborador/:id', component: Collaborators },
 	{ path: '/cargo', component: Roles },
+	{ path: '/cargo/:id', component: Roles },
 
 	{ path: '/', exact: true, component: () => <Redirect to="/" /> },
 ];
