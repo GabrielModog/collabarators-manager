@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
+import Login from '../pages/Login';
+
 import Home from '../pages/Home';
 import Collaborators from '../pages/Collaborators';
 import Roles from '../pages/Roles';
@@ -15,4 +17,6 @@ const authRoutes = [
 	{ path: '/', exact: true, component: () => <Redirect to="/" /> },
 ];
 
-export default authRoutes;
+const publicRoutes = [{ path: '/login', component: Login }];
+
+export { publicRoutes, authRoutes };

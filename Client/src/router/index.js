@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import Layout from '../components/Layout';
+
+import StorageContext from '../context/context';
 
 const AuthRouter = ({
 	component: Component,
@@ -9,8 +11,10 @@ const AuthRouter = ({
 	layout,
 	...rest
 }) => {
-	if (authProtected) {
-		return <Redirect to={{ pathname: '/', state: { from: location } }} />;
+	const { token } = useContext(StorageContext);
+
+	if (authProtected && !token) {
+		return <Redirect to={{ pathname: '/login', state: { from: location } }} />;
 	}
 
 	return (
