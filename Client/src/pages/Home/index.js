@@ -5,11 +5,13 @@ import {
 	Sides,
 	Row,
 	Column,
+	Pagination,
 	RegisterCollaborator,
 	RegisterRole,
 	RoleItem,
 	CollabItem,
 	RoleSide,
+	Button,
 	DeleteButton,
 	EditButton,
 } from '../style';
@@ -17,13 +19,16 @@ import api from '../../services';
 
 const Home = () => {
 	const [collaborators, setCollaborators] = useState(null);
+	const [pagination, setPagination] = useState(1);
 	const [roles, setRoles] = useState(null);
 	const history = useHistory();
 
 	useEffect(() => {
 		const loadCollaborators = async () => {
 			try {
-				const { data } = await api.get('/collaborators');
+				const { data } = await api.get(
+					`/collaborators?_page=${pagination}&_limit=3`
+				);
 				return setCollaborators(data);
 			} catch (error) {
 				return error;
@@ -41,12 +46,22 @@ const Home = () => {
 
 		loadCollaborators();
 		loadRoles();
-	}, []);
+	}, [pagination]);
+
+	const pageControl = {
+		increment: () =>
+			collaborators.length !== 0
+				? setPagination(prev => prev + 1)
+				: setPagination(1),
+		decrement: () =>
+			pagination >= 1 ? setPagination(prev => prev - 1) : setPagination(1),
+		back: () => setPagination(1),
+	};
 
 	return (
 		<Container>
 			<Column alignEnd>
-				<Row>
+				<Row style={{ margin: '0 0 20px 0' }}>
 					<RegisterCollaborator
 						type="button"
 						onClick={() => history.push('/colaborador')}
@@ -62,6 +77,9 @@ const Home = () => {
 				<Sides>
 					<h3>Funcionários</h3>
 					<ul>
+						{collaborators && collaborators.length === 0 && (
+							<h1>Nenhum colaborador encontrado...</h1>
+						)}
 						{collaborators === null ? (
 							<p>Carregando...</p>
 						) : (
@@ -95,6 +113,24 @@ const Home = () => {
 							))
 						)}
 					</ul>
+					<Pagination>
+						{pagination && collaborators && collaborators.length === 0 ? (
+							<>
+								<Button type="button" onClick={() => pageControl.back()}>
+									Voltar
+								</Button>
+							</>
+						) : (
+							<>
+								<Button type="button" onClick={() => pageControl.decrement()}>
+									<i className="fas fa-chevron-left" />
+								</Button>
+								<Button type="button" onClick={() => pageControl.increment()}>
+									<i className="fas fa-chevron-right" />
+								</Button>
+							</>
+						)}
+					</Pagination>
 				</Sides>
 				<Sides>
 					<h3>Cargos</h3>

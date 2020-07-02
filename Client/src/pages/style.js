@@ -4,6 +4,8 @@ import { Button } from '../components/Form';
 
 import { Grey, Primary, Success, Warning, Danger } from '../styles/palette';
 
+export { Button } from '../components/Form';
+
 export const Container = styled.section`
 	display: flex;
 	flex-direction: column;
@@ -228,4 +230,10 @@ export const DeleteButton = styled(Button)`
 		font-size: 0.6rem;
 		text-align: center;
 	}
+`;
+
+export const Pagination = styled.div`
+	display: flex;
+	justify-content: center;
+	margin: 20px 40px 40px 40px;
 `;
