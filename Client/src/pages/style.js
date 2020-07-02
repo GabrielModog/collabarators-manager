@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { Button } from '../components/Form';
+
+import { Grey, Primary, Success, Warning } from '../styles/palette';
 
 export const Container = styled.section`
 	display: flex;
@@ -33,5 +36,44 @@ export const Sides = styled.div`
 
 	ul {
 		list-style: none;
+	}
+`;
+
+export const SendButton = styled(Button)`
+	color: ${Grey[0]};
+	background-color: ${Primary[200]};
+	&:hover {
+		color: ${Grey[400]};
+		background-color: ${Primary[400]};
+	}
+	&:focus {
+		color: ${Grey[400]};
+		background-color: ${Primary[400]};
+	}
+`;
+
+export const RegisterCollaborator = styled(Button)`
+	color: ${Grey[0]};
+	background-color: ${Success[200]};
+	&:hover {
+		color: ${Grey[400]};
+		background-color: ${Primary[400]};
+	}
+	&:focus {
+		color: ${Grey[400]};
+		background-color: ${Primary[400]};
+	}
+`;
+
+export const RegisterRole = styled(Button)`
+	color: ${Grey[0]};
+	background-color: ${Warning[200]};
+	&:hover {
+		color: ${Grey[400]};
+		background-color: ${Primary[400]};
+	}
+	&:focus {
+		color: ${Grey[400]};
+		background-color: ${Primary[400]};
 	}
 `;

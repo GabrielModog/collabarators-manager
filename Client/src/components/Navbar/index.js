@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Nav, NavItem } from './style';
-import { Button } from '../Form';
+import { Nav, NavItem, LogoutButton } from './style';
 
 const Navbar = () => {
 	return (
@@ -10,7 +9,7 @@ const Navbar = () => {
 				<h1>Collaborator</h1>
 			</NavItem>
 
-			<Button type="button">Sair</Button>
+			<LogoutButton type="button">Sair</LogoutButton>
 		</Nav>
 	);
 };

@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Container, Sides, Row, Column } from '../style';
-import { Button } from '../../components/Form';
+import {
+	Container,
+	Sides,
+	Row,
+	Column,
+	RegisterCollaborator,
+	RegisterRole,
+} from '../style';
 import api from '../../services';
 
 const Home = () => {
@@ -36,10 +42,13 @@ const Home = () => {
 		<Container>
 			<Column alignEnd>
 				<Row>
-					<Button type="button" onClick={() => history.push('/colaborador')}>
+					<RegisterCollaborator
+						type="button"
+						onClick={() => history.push('/colaborador')}
+					>
 						REGISTRAR FUNCIONÁRIO
-					</Button>
-					<Button type="button">REGISTRAR CARGO</Button>
+					</RegisterCollaborator>
+					<RegisterRole type="button">REGISTRAR CARGO</RegisterRole>
 				</Row>
 			</Column>
 			<Row>
