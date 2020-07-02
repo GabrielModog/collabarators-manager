@@ -63,22 +63,26 @@
     {
       "id": "0",
       "name": "Desenvolvedor Junior",
-      "slug": "junior"
+      "slug": "junior",
+      "description": "Uma vez que eles exigem um pouco mais de supervisão, os desenvolvedores júnior estão sempre à espera de instruções, certo? De acordo com as pessoas com quem conversamos, aqueles que você contratar encontrarão maneiras de fazer o seu trabalho sem que lhes seja pedido."
     },
     {
       "id": "1",
       "name": "Desenvolvedor Pleno",
-      "slug": "pleno"
+      "slug": "pleno",
+      "description": " É um profissional mais confiante, porém ainda conta com um supervisor para auxiliá-lo, geralmente um profissional nível sênior."
     },
     {
       "id": "2",
       "name": "Desenvolvedor Senior",
-      "slug": "senior"
+      "slug": "senior",
+      "description": "Esse profissional tem 10 ou mais anos de experiência e terá mais participações em reuniões importantes com coordenadores e diretorias, além de receber mais atividades que exigem mais experiência profissional."
     },
     {
       "id": "3",
       "name": "Desenvolvedor Especialista",
-      "slug": "especialista"
+      "slug": "especialista",
+      "description": "É um profissional especializado, contém já habilidades em particular o suficiente para gerir seus projetos por conta própria e outros desenvolvedores."
     }
   ]
 }
