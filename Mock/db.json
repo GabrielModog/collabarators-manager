@@ -14,6 +14,7 @@
       "lastname": "Di tal",
       "birthday": "21/04/1991",
       "salary": 5000,
+      "role": "Desenvoledor Pleno",
       "roleId": "1"
     },
     {
@@ -22,25 +23,30 @@
       "lastname": "Gomes",
       "birthday": "01/07/2000",
       "salary": 1000,
+      "role": "Desenvoledor Junior",
       "roleId": "0"
     }
   ],
   "roles": [
     {
       "id": "0",
-      "junior": "Desenvolvedor Junior"
+      "name": "Desenvolvedor Junior",
+      "slug": "junior"
     },
     {
       "id": "1",
-      "pleno": "Desenvolvedor Pleno"
+      "name": "Desenvolvedor Pleno",
+      "slug": "pleno"
     },
     {
       "id": "2",
-      "senior": "Desenvolvedor Senior"
+      "name": "Desenvolvedor Senior",
+      "slug": "senior"
     },
     {
       "id": "3",
-      "especialist": "Desenvolvedor Especialista"
+      "name": "Desenvolvedor Especialista",
+      "slug": "especialista"
     }
   ]
 }

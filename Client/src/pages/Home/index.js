@@ -1,35 +1,77 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import Container from '../style';
+import { Sides, Row, Column } from './style';
+import api from '../../services';
 
 const Home = () => {
+	const [collaborators, setCollaborators] = useState(null);
+	const [roles, setRoles] = useState(null);
+	const history = useHistory();
+
+	useEffect(() => {
+		const loadCollaborators = async () => {
+			try {
+				const { data } = await api.get('/collaborators');
+				return setCollaborators(data);
+			} catch (error) {
+				return error;
+			}
+		};
+
+		const loadRoles = async () => {
+			try {
+				const { data } = await api.get('/roles');
+				return setRoles(data);
+			} catch (error) {
+				return error;
+			}
+		};
+
+		loadCollaborators();
+		loadRoles();
+	}, []);
+
 	return (
-		<section>
-			<div>
-				<button type="button">REGISTRAR FUNCIONÁRIO</button>
-				<br />
-				<button type="button">REGISTRAR CARGO</button>
-			</div>
-			<div>
-				<h3>Funcionários</h3>
-				<ul>
-					<li>
-						<p>Nome Sobrenome</p>
-						<p>Cargo</p>
-						<p>00/00/0000</p>
-						<p>R$ 5.000,00</p>
-					</li>
-				</ul>
-			</div>
-			<div>
-				<h3>Cargos</h3>
-				<ul>
-					<li>Desenvolvedor Junior</li>
-					<li>Desenvolvedor Pleno</li>
-					<li>Desenvolvedor Senior</li>
-					<li>Desenvolvedor Especialista</li>
-					<li>Tech Lead</li>
-				</ul>
-			</div>
-		</section>
+		<Container>
+			<Column>
+				<Row>
+					<button type="button" onClick={() => history.push('/colaborador')}>
+						REGISTRAR FUNCIONÁRIO
+					</button>
+					<button type="button">REGISTRAR CARGO</button>
+				</Row>
+			</Column>
+			<Row>
+				<Sides>
+					<h3>Funcionários</h3>
+					<ul>
+						{collaborators === null ? (
+							<p>Carregando...</p>
+						) : (
+							collaborators.map(collab => (
+								<li key={collab.id}>
+									<p>{`${collab.name} ${collab.lastname}`}</p>
+									<p>{collab.role}</p>
+									<p>{collab.birthday}</p>
+									<p>R$ {collab.salary}</p>
+								</li>
+							))
+						)}
+					</ul>
+				</Sides>
+				<Sides>
+					<h3>Cargos</h3>
+					<ul>
+						{roles === null ? (
+							<p>Carregando...</p>
+						) : (
+							roles.map(role => <li key={role.id}>{role.name}</li>)
+						)}
+					</ul>
+				</Sides>
+			</Row>
+		</Container>
 	);
 };
 
