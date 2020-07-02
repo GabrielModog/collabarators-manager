@@ -7,6 +7,8 @@ import {
 	Column,
 	RegisterCollaborator,
 	RegisterRole,
+	CollabItem,
+	RoleSide,
 } from '../style';
 import api from '../../services';
 
@@ -48,7 +50,9 @@ const Home = () => {
 					>
 						REGISTRAR FUNCIONÁRIO
 					</RegisterCollaborator>
-					<RegisterRole type="button">REGISTRAR CARGO</RegisterRole>
+					<RegisterRole type="button" onClick={() => history.push('/cargo')}>
+						REGISTRAR CARGO
+					</RegisterRole>
 				</Row>
 			</Column>
 			<Row>
@@ -59,25 +63,33 @@ const Home = () => {
 							<p>Carregando...</p>
 						) : (
 							collaborators.map(collab => (
-								<li key={collab.id}>
-									<p>{`${collab.name} ${collab.lastname}`}</p>
-									<p>{collab.role}</p>
-									<p>{collab.birthday}</p>
-									<p>R$ {collab.salary}</p>
-								</li>
+								<CollabItem key={collab.id}>
+									<div>
+										<p>
+											<strong>{`${collab.name} ${collab.lastname}`}</strong>
+										</p>
+										<p>{collab.role}</p>
+									</div>
+									<div>
+										<p>{collab.birthday}</p>
+										<p>R$ {collab.salary}</p>
+									</div>
+								</CollabItem>
 							))
 						)}
 					</ul>
 				</Sides>
 				<Sides>
 					<h3>Cargos</h3>
-					<ul>
-						{roles === null ? (
-							<p>Carregando...</p>
-						) : (
-							roles.map(role => <li key={role.id}>{role.name}</li>)
-						)}
-					</ul>
+					<RoleSide>
+						<ul>
+							{roles === null ? (
+								<p>Carregando...</p>
+							) : (
+								roles.map(role => <li key={role.id}>{role.name}</li>)
+							)}
+						</ul>
+					</RoleSide>
 				</Sides>
 			</Row>
 		</Container>

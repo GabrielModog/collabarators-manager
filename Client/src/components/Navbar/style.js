@@ -18,7 +18,7 @@ export const NavItem = styled(Link)`
 `;
 
 export const LogoutButton = styled(Button)`
-	color: ${Grey[0]};
+	color: ${Grey[500]};
 	background-color: ${Danger[200]};
 	&:hover {
 		color: ${Grey[400]};
