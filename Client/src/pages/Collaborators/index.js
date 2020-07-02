@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { Form } from '../../components/Form';
 import Input from '../../components/Form/Input';
@@ -33,6 +34,7 @@ const Collaborators = () => {
 			};
 
 			api.post('/collaborators', { ...submission });
+			toast.success('Colaborador criado!');
 			return history.push('/');
 		} catch (err) {
 			const validationErrors = {};
@@ -42,6 +44,7 @@ const Collaborators = () => {
 				});
 				formRef.current.setErrors(validationErrors);
 			}
+			toast.error('Ocorreu algum erro!');
 			return err;
 		}
 	};
