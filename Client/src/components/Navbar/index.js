@@ -1,16 +1,15 @@
 import React from 'react';
 
-import { Nav, NavItem } from './style';
+import { Nav, NavItem, LogoutButton } from './style';
 
 const Navbar = () => {
 	return (
 		<Nav>
-			<NavItem>
+			<NavItem to="/">
 				<h1>Collaborator</h1>
 			</NavItem>
-			<NavItem>
-				<button type="button">Sair</button>
-			</NavItem>
+
+			<LogoutButton type="button">Sair</LogoutButton>
 		</Nav>
 	);
 };

@@ -2,10 +2,8 @@ import React from 'react';
 import Navbar from '../Navbar';
 import { HeaderContainer } from './style';
 
-const Header = () => (
-	<HeaderContainer>
-		<Navbar />
-	</HeaderContainer>
+const Header = ({ layout }) => (
+	<HeaderContainer>{layout && <Navbar />}</HeaderContainer>
 );
 
 export default Header;

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { Grey } from './palette';
+import { Grey, Primary } from './palette';
 
 const GlobalStyle = createGlobalStyle`
 	html, * {
@@ -13,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
 		height: 100vh;
 		font-weight: 300;
 		font-family: 'Roboto', sans-serif;
-		background-color: ${Grey[0]}
+		background-color: ${Grey[0]};
+		color: ${Primary[400]};
 	}
 `;
 
