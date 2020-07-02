@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Container from '../style';
-import { Sides, Row, Column } from './style';
+import { Container, Sides, Row, Column } from '../style';
+import { Button } from '../../components/Form';
 import api from '../../services';
 
 const Home = () => {
@@ -34,12 +34,12 @@ const Home = () => {
 
 	return (
 		<Container>
-			<Column>
+			<Column alignEnd>
 				<Row>
-					<button type="button" onClick={() => history.push('/colaborador')}>
+					<Button type="button" onClick={() => history.push('/colaborador')}>
 						REGISTRAR FUNCIONÁRIO
-					</button>
-					<button type="button">REGISTRAR CARGO</button>
+					</Button>
+					<Button type="button">REGISTRAR CARGO</Button>
 				</Row>
 			</Column>
 			<Row>

@@ -2,9 +2,9 @@ import React from 'react';
 import Header from '../Header';
 import { MainLayout, Main } from './style';
 
-export default ({ children }) => (
+export default ({ layout, children }) => (
 	<MainLayout>
-		<Header />
+		<Header layout={layout} />
 		<Main>{children}</Main>
 	</MainLayout>
 );

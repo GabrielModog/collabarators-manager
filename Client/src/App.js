@@ -1,12 +1,22 @@
 import React from 'react';
-
-import Layout from './components/Layout';
-import Home from './pages/Home';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import AuthRouter from './router';
+import authRoutes from './router/routes';
 
 const App = () => (
-	<Layout>
-		<Home />
-	</Layout>
+	<Router>
+		<Switch>
+			{authRoutes.map(route => (
+				<AuthRouter
+					exact
+					path={route.path}
+					layout
+					component={route.component}
+					key={route.path + 2}
+				/>
+			))}
+		</Switch>
+	</Router>
 );
 
 export default App;

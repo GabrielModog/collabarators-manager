@@ -1,7 +1,8 @@
 import React from 'react';
 import { Form } from '@unform/web';
 import Input from '../../components/Form/Input';
-import Container from '../style';
+import { Button } from '../../components/Form';
+import { Container, Column, Row } from '../style';
 
 const Collaborators = () => {
 	const onSubmission = data => {
@@ -10,11 +11,27 @@ const Collaborators = () => {
 
 	return (
 		<Container>
-			<h1>Registrar</h1>
+			<h1>Registrar Colaborador</h1>
 			<Form onSubmit={onSubmission}>
-				<Input name="name" type="text" placeholder="Nome..." />
-				<Input name="lastname" type="text" placeholder="Sobrenome..." />
-				<button type="submit">Enviar</button>
+				<Column>
+					<Row>
+						<Input name="name" type="text" placeholder="Nome" />
+						<Input name="lastname" type="text" placeholder="Sobrenome" />
+						<Input
+							name="birthday"
+							type="text"
+							placeholder="Data de nascimento"
+						/>
+					</Row>
+					<Row>
+						<Input name="role" type="text" placeholder="Cargo" />
+
+						<Input name="salary" type="text" placeholder="Salário" />
+					</Row>
+					<Row>
+						<Button type="submit">Enviar</Button>
+					</Row>
+				</Column>
 			</Form>
 		</Container>
 	);
