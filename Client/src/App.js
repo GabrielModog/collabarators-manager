@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import AuthRouter from './router';
+import { publicRoutes, authRoutes } from './router/routes';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+	<Router>
+		<Switch>
+			{publicRoutes.map(route => (
+				<AuthRouter
+					exact
+					path={route.path}
+					authProtected={false}
+					layout={false}
+					component={route.component}
+					key={route.path + 1}
+				/>
+			))}
+
+			{authRoutes.map(route => (
+				<AuthRouter
+					exact
+					layout
+					authProtected
+					path={route.path}
+					component={route.component}
+					key={route.path + 2}
+				/>
+			))}
+		</Switch>
+	</Router>
+);
 
 export default App;

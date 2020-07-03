@@ -1,0 +1,88 @@
+{
+  "me": [
+    {
+      "id": "#pn@434",
+      "name": "admin",
+      "password": "admin",
+      "token": "nicetokentohaveyouknow"
+    }
+  ],
+  "collaborators": [
+    {
+      "id": "20932kk23ok",
+      "name": "Fulano",
+      "lastname": "Di tal",
+      "birthday": "21/04/1991",
+      "salary": 5000,
+      "role": "Desenvoledor Pleno",
+      "roleId": "1"
+    },
+    {
+      "id": "thrtrtert",
+      "name": "Lucas",
+      "lastname": "Gomes",
+      "birthday": "01/07/2000",
+      "salary": 1000,
+      "role": "Desenvoledor Junior",
+      "roleId": "0"
+    },
+    {
+      "name": "e",
+      "lastname": "e",
+      "birthday": "13/13/2123",
+      "role": "ere",
+      "salary": "R$ 131231",
+      "id": "EpKMWss"
+    },
+    {
+      "name": "Gabriel",
+      "lastname": "Tavares",
+      "birthday": "00/00/0000",
+      "role": "Teste",
+      "salary": "6000__",
+      "id": "iC6gdL-"
+    },
+    {
+      "name": "Gabriel",
+      "lastname": "Tavares",
+      "birthday": "00/00/0000",
+      "role": "Teste",
+      "salary": "600000",
+      "id": "i6CQp2v"
+    },
+    {
+      "name": "erqe",
+      "lastname": "qweqw",
+      "birthday": "13/12/3123",
+      "salary": "34234234",
+      "role": "pleno",
+      "id": "2CVCaXT"
+    }
+  ],
+  "roles": [
+    {
+      "id": "0",
+      "name": "Desenvolvedor Junior",
+      "slug": "junior",
+      "description": "Uma vez que eles exigem um pouco mais de supervisão, os desenvolvedores júnior estão sempre à espera de instruções, certo? De acordo com as pessoas com quem conversamos, aqueles que você contratar encontrarão maneiras de fazer o seu trabalho sem que lhes seja pedido."
+    },
+    {
+      "id": "1",
+      "name": "Desenvolvedor Pleno",
+      "slug": "pleno",
+      "description": " É um profissional mais confiante, porém ainda conta com um supervisor para auxiliá-lo, geralmente um profissional nível sênior."
+    },
+    {
+      "id": "2",
+      "name": "Desenvolvedor Senior",
+      "slug": "senior",
+      "description": "Esse profissional tem 10 ou mais anos de experiência e terá mais participações em reuniões importantes com coordenadores e diretorias, além de receber mais atividades que exigem mais experiência profissional."
+    },
+    {
+      "id": "3",
+      "name": "Desenvolvedor Especialista",
+      "slug": "especialista",
+      "description": "É um profissional especializado, contém já habilidades em particular o suficiente para gerir seus projetos por conta própria e outros desenvolvedores."
+    }
+  ]
+}
