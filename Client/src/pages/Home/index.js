@@ -18,6 +18,8 @@ import {
 	EditButton,
 } from '../style';
 
+import Collab from '../../components/Collab';
+
 import { loadCollaborators } from '../../store/collaborators/action';
 import { loadRoles } from '../../store/roles/action';
 
@@ -74,67 +76,11 @@ const Home = () => {
 			<Row>
 				<Sides>
 					<h3>Funcionários</h3>
-					<ul>
-						{CollaboratorsList && CollaboratorsList.length === 0 && (
-							<h1>Nenhum colaborador encontrado...</h1>
-						)}
-						{CollaboratorsList === undefined || null ? (
-							<p>Carregando...</p>
-						) : (
-							CollaboratorsList.map(collab => (
-								<CollabItem key={collab.id}>
-									<div className="row">
-										<div>
-											<p>
-												<strong>{`${collab.name} ${collab.lastname}`}</strong>
-											</p>
-											<p>{collab.role.name}</p>
-										</div>
-										<div>
-											<p>{collab.birthday}</p>
-											<p>R$ {collab.salary}</p>
-										</div>
-									</div>
-
-									<div className="tools">
-										<EditButton
-											type="button"
-											onClick={() => history.push(`/colaborador/${collab.id}`)}
-										>
-											<i className="far fa-edit" />
-										</EditButton>
-										<DeleteButton type="button">
-											<i className="far fa-trash-alt" />
-										</DeleteButton>
-									</div>
-								</CollabItem>
-							))
-						)}
-					</ul>
-					<Pagination>
-						{pagination &&
-						CollaboratorsList &&
-						CollaboratorsList.length === 0 ? (
-							<>
-								<Button type="button" onClick={() => pageControl.back()}>
-									Voltar
-								</Button>
-							</>
-						) : (
-							<>
-								<Button
-									type="button"
-									disabled={pagination <= 1}
-									onClick={() => pageControl.decrement()}
-								>
-									<i className="fas fa-chevron-left" />
-								</Button>
-								<Button type="button" onClick={() => pageControl.increment()}>
-									<i className="fas fa-chevron-right" />
-								</Button>
-							</>
-						)}
-					</Pagination>
+					<Collab
+						list={CollaboratorsList}
+						pages={pagination}
+						pageController={pageControl}
+					/>
 				</Sides>
 				<Sides>
 					<h3>Cargos</h3>
