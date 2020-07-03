@@ -6,7 +6,7 @@ import StorageContext from '../../context/context';
 import Input from '../../components/Form/Input';
 
 import api from '../../services';
-import { LoginButton, LoginSection, LoginForm, Column } from '../style';
+import { LoginButton, LoginSection, LoginForm } from '../style';
 
 const Login = () => {
 	const history = useHistory();
@@ -59,11 +59,11 @@ const Login = () => {
 			>
 				<h3>Login</h3>
 				<br />
-				<Column>
-					<Input type="text" name="name" placeholder="Usuário" />
 
-					<Input type="password" name="password" placeholder="Senha" />
-				</Column>
+				<Input type="text" name="name" placeholder="Usuário" />
+
+				<Input type="password" name="password" placeholder="Senha" />
+
 				<br />
 				<LoginButton type="submit">Entrar</LoginButton>
 			</LoginForm>

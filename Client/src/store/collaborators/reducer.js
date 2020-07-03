@@ -1,4 +1,7 @@
-import { LOAD_COLLABORATORS } from '../../types/collaborators';
+import {
+	LOAD_COLLABORATORS,
+	REMOVE_COLLABORATOR,
+} from '../../types/collaborators';
 
 const INITIAL_STATE = {
 	collaborators: [],
@@ -13,6 +16,8 @@ const collaborators = (state = INITIAL_STATE, { type, payload }) => {
 				collaborators: [...payload],
 				loading: false,
 			};
+		case REMOVE_COLLABORATOR:
+			return state;
 		default:
 			return state;
 	}
