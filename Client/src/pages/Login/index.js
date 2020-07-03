@@ -59,11 +59,11 @@ const Login = () => {
 			>
 				<h3>Login</h3>
 				<br />
-				<Column>
-					<Input type="text" name="name" placeholder="Usuário" />
 
-					<Input type="password" name="password" placeholder="Senha" />
-				</Column>
+				<Input type="text" name="name" placeholder="Usuário" />
+
+				<Input type="password" name="password" placeholder="Senha" />
+
 				<br />
 				<LoginButton type="submit">Entrar</LoginButton>
 			</LoginForm>
