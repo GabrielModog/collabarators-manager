@@ -1,27 +1,23 @@
 import React from 'react';
-
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import api from '../../services';
+import { removeCollaborator } from '../../store/collaborators/action';
 
 import {
 	Button,
 	EditButton,
 	DeleteButton,
-	DeleteButtonConfirmation,
 	Pagination,
 	CollabItem,
 } from './style.js';
 
 const Collab = ({ list, pages, pageController }) => {
 	const history = useHistory();
+	const dispatch = useDispatch();
 
-	const deleteItem = async id => {
-		try {
-			await api.delete(`/collaborators/${id}`);
-		} catch (error) {
-			return error;
-		}
+	const deleteItem = id => {
+		dispatch(removeCollaborator(id));
 	};
 
 	return (
