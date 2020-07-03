@@ -1,6 +1,6 @@
 import React from 'react';
 import Context from './context';
-import { useStorage } from '../hooks';
+import useStorage from '../hooks/useStorage';
 
 const StoreProvider = ({ children }) => {
 	const [token, setToken, removeToken] = useStorage('token');

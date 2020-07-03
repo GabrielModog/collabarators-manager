@@ -122,7 +122,11 @@ const Home = () => {
 							</>
 						) : (
 							<>
-								<Button type="button" onClick={() => pageControl.decrement()}>
+								<Button
+									type="button"
+									disabled={pagination <= 1}
+									onClick={() => pageControl.decrement()}
+								>
 									<i className="fas fa-chevron-left" />
 								</Button>
 								<Button type="button" onClick={() => pageControl.increment()}>

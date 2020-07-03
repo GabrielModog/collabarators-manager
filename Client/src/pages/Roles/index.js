@@ -54,7 +54,7 @@ const Roles = () => {
 		};
 
 		loadRoles();
-	}, []);
+	}, [id]);
 
 	return (
 		<Container>

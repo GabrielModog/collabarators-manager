@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Button } from '../components/Form';
+import { Form, Button } from '../components/Form';
 
 import { Grey, Primary, Success, Warning, Danger } from '../styles/palette';
 
@@ -36,6 +36,21 @@ export const Sides = styled.div`
 	flex-direction: column;
 	margin: 0 1rem;
 	width: 100%;
+`;
+
+export const LoginSection = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
+export const LoginForm = styled(Form)`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 40px;
 `;
 
 export const RoleSide = styled.div`
@@ -229,6 +244,21 @@ export const DeleteButton = styled(Button)`
 	i {
 		font-size: 0.6rem;
 		text-align: center;
+	}
+`;
+export const LoginButton = styled(Button)`
+	display: inline-block;
+	width: 60%;
+	font-size: 1.1rem;
+	color: ${Grey[500]};
+	background-color: ${Primary[200]};
+	&:hover {
+		color: ${Grey[400]};
+		background-color: ${Primary[400]};
+	}
+	&:focus {
+		color: ${Grey[400]};
+		background-color: ${Primary[400]};
 	}
 `;
 

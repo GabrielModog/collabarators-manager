@@ -10,6 +10,7 @@ const App = () => (
 				<AuthRouter
 					exact
 					path={route.path}
+					authProtected={false}
 					layout={false}
 					component={route.component}
 					key={route.path + 1}
