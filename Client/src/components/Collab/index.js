@@ -2,16 +2,28 @@ import React from 'react';
 
 import { useHistory } from 'react-router-dom';
 
+import api from '../../services';
+
 import {
 	Button,
 	EditButton,
 	DeleteButton,
+	DeleteButtonConfirmation,
 	Pagination,
 	CollabItem,
 } from './style.js';
 
 const Collab = ({ list, pages, pageController }) => {
 	const history = useHistory();
+
+	const deleteItem = async id => {
+		try {
+			await api.delete(`/collaborators/${id}`);
+		} catch (error) {
+			return error;
+		}
+	};
+
 	return (
 		<div>
 			<div>
@@ -41,7 +53,14 @@ const Collab = ({ list, pages, pageController }) => {
 								>
 									<i className="far fa-edit" />
 								</EditButton>
-								<DeleteButton type="button">
+
+								<DeleteButton
+									type="button"
+									onClick={() => {
+										deleteItem(collab.id);
+										pageController.back();
+									}}
+								>
 									<i className="far fa-trash-alt" />
 								</DeleteButton>
 							</div>

@@ -38,7 +38,7 @@ const Home = () => {
 	useEffect(() => {
 		const updateList = setInterval(() => {
 			dispatch(loadCollaborators(pagination));
-		}, 10 * 1000);
+		}, 6 * 1000);
 		return () => clearInterval(updateList);
 	});
 

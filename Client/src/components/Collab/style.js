@@ -5,25 +5,6 @@ import { Grey, Primary, Warning, Danger } from '../../styles/palette';
 
 export { Button } from '../../components/Form';
 
-export const Column = styled.div`
-	display: flex;
-	flex-direction: column;
-	${props => (props.alignEnd ? 'align-items: flex-end;' : '')}
-`;
-
-export const Row = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-`;
-
-export const Sides = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin: 0 1rem;
-	width: 100%;
-`;
-
 export const CollabItem = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -62,6 +43,7 @@ export const CollabItem = styled.div`
 		justify-content: center;
 		padding: 0 1rem;
 		background-color: ${Danger[0]};
+		position: relative;
 
 		button {
 			margin: 5px 0;
@@ -121,21 +103,6 @@ export const DeleteButton = styled(Button)`
 	i {
 		font-size: 0.6rem;
 		text-align: center;
-	}
-`;
-export const LoginButton = styled(Button)`
-	display: inline-block;
-	width: 60%;
-	font-size: 1.1rem;
-	color: ${Grey[500]};
-	background-color: ${Primary[200]};
-	&:hover {
-		color: ${Grey[400]};
-		background-color: ${Primary[400]};
-	}
-	&:focus {
-		color: ${Grey[400]};
-		background-color: ${Primary[400]};
 	}
 `;
 
