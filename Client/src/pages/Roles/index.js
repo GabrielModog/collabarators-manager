@@ -53,7 +53,7 @@ const Roles = () => {
 			}
 		};
 
-		loadRoles();
+		if (id) loadRoles();
 	}, [id]);
 
 	return (

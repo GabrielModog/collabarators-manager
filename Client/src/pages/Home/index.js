@@ -90,7 +90,7 @@ const Home = () => {
 											<p>
 												<strong>{`${collab.name} ${collab.lastname}`}</strong>
 											</p>
-											<p>{collab.role}</p>
+											<p>{collab.role.name}</p>
 										</div>
 										<div>
 											<p>{collab.birthday}</p>

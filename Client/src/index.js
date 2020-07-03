@@ -10,12 +10,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import StorageProvider from './context/provider';
 
 ReactDOM.render(
-	<React.StrictMode>
+	<React.Fragment>
 		<StorageProvider>
 			<GlobalStyle />
 			<App />
 			<ToastContainer position="top-center" autoClose={2000} />
 		</StorageProvider>
-	</React.StrictMode>,
+	</React.Fragment>,
 	document.getElementById('root')
 );
