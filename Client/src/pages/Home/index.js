@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {
 	Container,
@@ -17,27 +17,28 @@ import {
 	EditButton,
 } from '../style';
 import api from '../../services';
+import { loadCollaborators } from '../../store/collaborators/action';
 
 const Home = () => {
-	const [collaborators, setCollaborators] = useState(null);
 	const [pagination, setPagination] = useState(1);
 	const [roles, setRoles] = useState(null);
 	const history = useHistory();
+	const dispatch = useDispatch();
 
 	const Collaborators = useSelector(state => state.collaborators);
 
 	useEffect(() => {
-		const loadCollaborators = async () => {
-			try {
-				const { data } = await api.get(
-					`/collaborators?_page=${pagination}&_limit=3`
-				);
-				return setCollaborators(data);
-			} catch (error) {
-				return error;
-			}
-		};
+		dispatch(loadCollaborators(pagination));
+	}, [pagination]);
 
+	useEffect(() => {
+		const updateList = setInterval(() => {
+			dispatch(loadCollaborators(pagination));
+		}, 10 * 1000);
+		return () => clearInterval(updateList);
+	});
+
+	useEffect(() => {
 		const loadRoles = async () => {
 			try {
 				const { data } = await api.get('/roles');
@@ -47,9 +48,8 @@ const Home = () => {
 			}
 		};
 
-		// loadCollaborators();
 		loadRoles();
-	}, [pagination]);
+	}, []);
 
 	const pageControl = {
 		increment: () =>
@@ -83,7 +83,7 @@ const Home = () => {
 						{Collaborators && Collaborators.length === 0 && (
 							<h1>Nenhum colaborador encontrado...</h1>
 						)}
-						{Collaborators === null ? (
+						{Collaborators === undefined || null ? (
 							<p>Carregando...</p>
 						) : (
 							Collaborators.map(collab => (

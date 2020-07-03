@@ -4,26 +4,18 @@ import {
 } from '../../types/collaborators';
 
 const INITIAL_STATE = {
-	collaborators: [
-		{
-			id: '20932kk23ok',
-			name: 'Fulano',
-			lastname: 'Di tal',
-			birthday: '21/04/1991',
-			salary: 5000,
-			role: {
-				name: 'Desenvolvedor Pleno',
-				slug: 'pleno',
-			},
-			roleId: '1',
-		},
-	],
+	collaborators: [],
+	loading: false,
 };
 
 const collaborators = (state = INITIAL_STATE, { type, payload }) => {
 	switch (type) {
 		case LOAD_COLLABORATORS:
-			return state;
+			return {
+				...state,
+				collaborators: [...payload],
+				loading: true,
+			};
 		default:
 			return state;
 	}

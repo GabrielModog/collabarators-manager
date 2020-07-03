@@ -1,13 +1,12 @@
-import {
-	LOAD_COLLABORATORS,
-	LOAD_COLLABORATORS_SUCCESS,
-} from '../../types/collaborators';
+import { LOAD_COLLABORATORS } from '../../types/collaborators';
 
-const loadCollaborators = () => ({
-	type: LOAD_COLLABORATORS,
-});
+import api from '../../services';
 
-const loadCollaboratorsSucces = data => ({
-	type: LOAD_COLLABORATORS_SUCCESS,
-	payload: data,
-});
+export const loadCollaborators = pagination => dispatch => {
+	api.get(`/collaborators?_page=${pagination}&_limit=3`).then(res =>
+		dispatch({
+			type: LOAD_COLLABORATORS,
+			payload: res.data,
+		})
+	);
+};
