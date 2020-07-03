@@ -1,0 +1,3 @@
+export const LOAD_ROLES = 'LOAD_ROLES';
+export const LOAD_ROLES_SUCCESS = 'LOAD_ROLES_SUCCESS';
+export const LOAD_ROLES_FAILS = 'LOAD_ROLES_FAILS';

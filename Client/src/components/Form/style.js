@@ -13,7 +13,7 @@ export const CollabForm = styled(Form)`
 export const CollabInput = styled(InputRef)`
 	padding: 1rem 2rem;
 	margin: 5px;
-
+	width: 100%;
 	border-radius: 5px;
 	border: none;
 	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
