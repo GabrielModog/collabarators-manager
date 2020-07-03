@@ -7,18 +7,12 @@ import {
 	Sides,
 	Row,
 	Column,
-	Pagination,
 	RegisterCollaborator,
 	RegisterRole,
-	RoleItem,
-	CollabItem,
-	RoleSide,
-	Button,
-	DeleteButton,
-	EditButton,
 } from '../style';
 
 import Collab from '../../components/Collab';
+import Roles from '../../components/Roles';
 
 import { loadCollaborators } from '../../store/collaborators/action';
 import { loadRoles } from '../../store/roles/action';
@@ -84,20 +78,7 @@ const Home = () => {
 				</Sides>
 				<Sides>
 					<h3>Cargos</h3>
-					<RoleSide>
-						<div>
-							{RolesList === undefined || null ? (
-								<p>Carregando...</p>
-							) : (
-								RolesList.map(role => (
-									<RoleItem key={role.id} to={`/cargo/${role.id}`}>
-										{role.name}
-										<i className="far fa-edit" />
-									</RoleItem>
-								))
-							)}
-						</div>
-					</RoleSide>
+					<Roles list={RolesList} />
 				</Sides>
 			</Row>
 		</Container>
