@@ -14,49 +14,71 @@
       "lastname": "Di tal",
       "birthday": "21/04/1991",
       "salary": 5000,
-      "role": "Desenvoledor Pleno",
+      "role": {
+        "name": "Desenvolvedor Pleno",
+        "slug": "pleno"
+      },
       "roleId": "1"
     },
     {
-      "id": "thrtrtert",
       "name": "Lucas",
       "lastname": "Gomes",
-      "birthday": "01/07/2000",
-      "salary": 1000,
-      "role": "Desenvoledor Junior",
-      "roleId": "0"
+      "birthday": "17/02/2000",
+      "salary": "1200",
+      "role": {
+        "name": "Desenvolvedor Junior",
+        "slug": "junior"
+      },
+      "roleId": "0",
+      "id": "ferEu9D"
     },
     {
-      "name": "e",
-      "lastname": "e",
-      "birthday": "13/13/2123",
-      "role": "ere",
-      "salary": "R$ 131231",
-      "id": "EpKMWss"
+      "name": "Matheus",
+      "lastname": "Papini",
+      "birthday": "07/12/1997",
+      "salary": "3400",
+      "role": {
+        "name": "Desenvolvedor Pleno",
+        "slug": "pleno"
+      },
+      "roleId": "1",
+      "id": "82tz6LS"
     },
     {
-      "name": "Gabriel",
-      "lastname": "Tavares",
-      "birthday": "00/00/0000",
-      "role": "Teste",
-      "salary": "6000__",
-      "id": "iC6gdL-"
+      "name": "Almir",
+      "lastname": "Silva",
+      "birthday": "15/02/1982",
+      "salary": "18200",
+      "role": {
+        "name": "Desenvolvedor Especialista",
+        "slug": "especialista"
+      },
+      "roleId": "3",
+      "id": "uxLDl-A"
     },
     {
-      "name": "Gabriel",
-      "lastname": "Tavares",
-      "birthday": "00/00/0000",
-      "role": "Teste",
-      "salary": "600000",
-      "id": "i6CQp2v"
+      "name": "Mario",
+      "lastname": "Flavio",
+      "birthday": "20/01/1994",
+      "salary": "2300",
+      "role": {
+        "name": "Desenvolvedor Junior",
+        "slug": "junior"
+      },
+      "roleId": "0",
+      "id": "w1S4z4q"
     },
     {
-      "name": "erqe",
-      "lastname": "qweqw",
-      "birthday": "13/12/3123",
-      "salary": "34234234",
-      "role": "pleno",
-      "id": "2CVCaXT"
+      "name": "John",
+      "lastname": "Doe",
+      "birthday": "19/04/1992",
+      "salary": "7800",
+      "role": {
+        "name": "Desenvolvedor Senior",
+        "slug": "senior"
+      },
+      "roleId": "2",
+      "id": "o8NutCw"
     }
   ],
   "roles": [

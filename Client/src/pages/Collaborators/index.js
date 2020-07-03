@@ -14,6 +14,7 @@ import collaboratorSchema from '../../validators/collaborator';
 import api from '../../services';
 
 const Collaborators = () => {
+	const [initialData, setInitialData] = useState(null);
 	const [roles, setRoles] = useState([]);
 	const history = useHistory();
 	const { id } = useParams();
@@ -24,6 +25,8 @@ const Collaborators = () => {
 				abortEarly: false,
 			});
 
+			const fixedRole = roles.find(role => role.value === data.role.slug);
+
 			const salaryFormat = data.salary.split('').reduce((accum, curr) => {
 				if (curr !== ' ') return accum + curr;
 				return '';
@@ -31,7 +34,12 @@ const Collaborators = () => {
 
 			const submission = {
 				...data,
+				role: {
+					name: fixedRole.label,
+					slug: fixedRole.value,
+				},
 				salary: salaryFormat,
+				roleId: fixedRole.id,
 			};
 
 			api.post('/collaborators', { ...submission });
@@ -57,6 +65,7 @@ const Collaborators = () => {
 				const rolesOption = data.map(item => ({
 					value: item.slug,
 					label: item.name,
+					id: item.id,
 				}));
 				return setRoles(rolesOption);
 			} catch (err) {
@@ -67,11 +76,35 @@ const Collaborators = () => {
 		loadRoles();
 	}, []);
 
+	useEffect(() => {
+		const loadInitialData = async () => {
+			try {
+				const { data } = await api.get(`/collaborators/${id}`);
+
+				const birthday = data.birthday.split('/').join('');
+				const formatted = {
+					...data,
+					birthday,
+				};
+
+				return setInitialData(formatted);
+			} catch (error) {
+				return error;
+			}
+		};
+
+		if (id) loadInitialData();
+	}, [id]);
+
 	return (
 		<Container>
 			{id ? <h1>Editar Colaborador</h1> : <h1>Registrar Colaborador</h1>}
 			<Row>
-				<Form onSubmit={onSubmission} ref={formRef}>
+				<Form
+					onSubmit={onSubmission}
+					initialData={id ? initialData : null}
+					ref={formRef}
+				>
 					<Column>
 						<Row>
 							<Input name="name" type="text" placeholder="Nome" />
@@ -88,7 +121,7 @@ const Collaborators = () => {
 						<Row>
 							<Input name="salary" type="text" placeholder="Salário" />
 							<Select
-								name="role"
+								name="role.slug"
 								placeholder="Selecione um cargo"
 								options={roles}
 							/>
