@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {
 	Container,
@@ -23,6 +24,8 @@ const Home = () => {
 	const [roles, setRoles] = useState(null);
 	const history = useHistory();
 
+	const Collaborators = useSelector(state => state.collaborators);
+
 	useEffect(() => {
 		const loadCollaborators = async () => {
 			try {
@@ -44,13 +47,13 @@ const Home = () => {
 			}
 		};
 
-		loadCollaborators();
+		// loadCollaborators();
 		loadRoles();
 	}, [pagination]);
 
 	const pageControl = {
 		increment: () =>
-			collaborators.length !== 0
+			Collaborators.length !== 0
 				? setPagination(prev => prev + 1)
 				: setPagination(1),
 		decrement: () =>
@@ -77,13 +80,13 @@ const Home = () => {
 				<Sides>
 					<h3>Funcionários</h3>
 					<ul>
-						{collaborators && collaborators.length === 0 && (
+						{Collaborators && Collaborators.length === 0 && (
 							<h1>Nenhum colaborador encontrado...</h1>
 						)}
-						{collaborators === null ? (
+						{Collaborators === null ? (
 							<p>Carregando...</p>
 						) : (
-							collaborators.map(collab => (
+							Collaborators.map(collab => (
 								<CollabItem key={collab.id}>
 									<div className="row">
 										<div>
@@ -114,7 +117,7 @@ const Home = () => {
 						)}
 					</ul>
 					<Pagination>
-						{pagination && collaborators && collaborators.length === 0 ? (
+						{pagination && Collaborators && Collaborators.length === 0 ? (
 							<>
 								<Button type="button" onClick={() => pageControl.back()}>
 									Voltar
