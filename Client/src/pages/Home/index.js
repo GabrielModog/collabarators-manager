@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {
 	Container,
@@ -15,42 +17,38 @@ import {
 	DeleteButton,
 	EditButton,
 } from '../style';
-import api from '../../services';
+
+import { loadCollaborators } from '../../store/collaborators/action';
+import { loadRoles } from '../../store/roles/action';
 
 const Home = () => {
-	const [collaborators, setCollaborators] = useState(null);
 	const [pagination, setPagination] = useState(1);
-	const [roles, setRoles] = useState(null);
 	const history = useHistory();
+	const dispatch = useDispatch();
+
+	const CollaboratorsList = useSelector(
+		state => state.collaborators.collaborators
+	);
+	const RolesList = useSelector(state => state.roles.roles);
 
 	useEffect(() => {
-		const loadCollaborators = async () => {
-			try {
-				const { data } = await api.get(
-					`/collaborators?_page=${pagination}&_limit=3`
-				);
-				return setCollaborators(data);
-			} catch (error) {
-				return error;
-			}
-		};
-
-		const loadRoles = async () => {
-			try {
-				const { data } = await api.get('/roles');
-				return setRoles(data);
-			} catch (error) {
-				return error;
-			}
-		};
-
-		loadCollaborators();
-		loadRoles();
+		dispatch(loadCollaborators(pagination));
 	}, [pagination]);
+
+	useEffect(() => {
+		dispatch(loadRoles());
+	}, []);
+
+	useEffect(() => {
+		const updateList = setInterval(() => {
+			dispatch(loadCollaborators(pagination));
+		}, 10 * 1000);
+		return () => clearInterval(updateList);
+	});
 
 	const pageControl = {
 		increment: () =>
-			collaborators.length !== 0
+			CollaboratorsList.length !== 0
 				? setPagination(prev => prev + 1)
 				: setPagination(1),
 		decrement: () =>
@@ -77,13 +75,13 @@ const Home = () => {
 				<Sides>
 					<h3>Funcionários</h3>
 					<ul>
-						{collaborators && collaborators.length === 0 && (
+						{CollaboratorsList && CollaboratorsList.length === 0 && (
 							<h1>Nenhum colaborador encontrado...</h1>
 						)}
-						{collaborators === null ? (
+						{CollaboratorsList === undefined || null ? (
 							<p>Carregando...</p>
 						) : (
-							collaborators.map(collab => (
+							CollaboratorsList.map(collab => (
 								<CollabItem key={collab.id}>
 									<div className="row">
 										<div>
@@ -114,7 +112,9 @@ const Home = () => {
 						)}
 					</ul>
 					<Pagination>
-						{pagination && collaborators && collaborators.length === 0 ? (
+						{pagination &&
+						CollaboratorsList &&
+						CollaboratorsList.length === 0 ? (
 							<>
 								<Button type="button" onClick={() => pageControl.back()}>
 									Voltar
@@ -140,10 +140,10 @@ const Home = () => {
 					<h3>Cargos</h3>
 					<RoleSide>
 						<div>
-							{roles === null ? (
+							{RolesList === undefined || null ? (
 								<p>Carregando...</p>
 							) : (
-								roles.map(role => (
+								RolesList.map(role => (
 									<RoleItem key={role.id} to={`/cargo/${role.id}`}>
 										{role.name}
 										<i className="far fa-edit" />
