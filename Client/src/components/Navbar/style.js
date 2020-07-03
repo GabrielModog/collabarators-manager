@@ -15,6 +15,11 @@ export const Nav = styled.nav`
 export const NavItem = styled(Link)`
 	text-decoration: none;
 	color: ${Primary[400]};
+	transition: 250ms;
+
+	&:hover {
+		opacity: 0.8;
+	}
 `;
 
 export const LogoutButton = styled(Button)`
