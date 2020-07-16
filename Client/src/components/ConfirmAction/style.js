@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Warning, Danger, Grey } from '../../styles/palette';
+import { Grey } from '../../styles/palette';
 
 export const ConfirmActionContainer = styled.div`
 	position: absolute;
@@ -24,9 +24,4 @@ export const ActionBody = styled.div`
 			margin: 0 5px;
 		}
 	}
-`;
-export const ConfirmActionTitle = styled.h1`
-	font-weight: 300;
-	font-size: 2.3rem;
-	padding: 0;
 `;

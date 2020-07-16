@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Item, EditButton, DeleteButton } from './style';
 
-import ConfirmACtion from '../ConfirmAction';
 import ConfirmAction from '../ConfirmAction';
 
 const CollabItem = ({

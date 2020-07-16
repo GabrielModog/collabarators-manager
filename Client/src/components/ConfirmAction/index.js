@@ -1,10 +1,6 @@
 import React from 'react';
 
-import {
-	ConfirmActionContainer,
-	ConfirmActionTitle,
-	ActionBody,
-} from './style';
+import { ConfirmActionContainer, ActionBody } from './style';
 
 const ConfirmAction = ({ show, children }) => {
 	return (
