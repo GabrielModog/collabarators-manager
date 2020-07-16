@@ -14,6 +14,8 @@ import {
 import Collab from '../../components/Collab';
 import Roles from '../../components/Roles';
 
+import Modal from '../../components/Modal';
+
 import { loadCollaborators } from '../../store/collaborators/action';
 import { loadRoles } from '../../store/roles/action';
 
@@ -54,6 +56,13 @@ const Home = () => {
 
 	return (
 		<Container>
+			<Modal open={true} title="Tem certeza parcero?">
+				thergowpofkwpoekpwoekrpowekoprkkwpgmspomspdom
+				<div className="modal-options">
+					<button type="button">SIM</button>
+					<button type="button">NÃO</button>
+				</div>
+			</Modal>
 			<Column alignEnd>
 				<Row style={{ margin: '0 0 20px 0' }}>
 					<RegisterCollaborator
