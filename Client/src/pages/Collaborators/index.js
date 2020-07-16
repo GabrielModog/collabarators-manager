@@ -11,7 +11,7 @@ import { Container, Column, Row, SendButton } from '../style';
 
 import collaboratorSchema from '../../validators/collaborator';
 
-import api from '../../services';
+import { api } from '../../services';
 
 const Collaborators = () => {
 	const [initialData, setInitialData] = useState(null);

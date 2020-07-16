@@ -8,7 +8,7 @@ import Input from '../../components/Form/Input';
 import { Container, Row, SendButton } from '../style';
 import roleSchema from '../../validators/role';
 
-import api from '../../services';
+import { api } from '../../services';
 
 const Roles = () => {
 	const [initialData, setInitialData] = useState(null);
