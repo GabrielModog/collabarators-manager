@@ -4,12 +4,10 @@ import { Grey, Danger, Warning } from '../../styles/palette';
 
 export const ModalContainer = styled.div`
 	z-index: 200;
-
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
 	position: fixed;
 	top: 0;
 	left: 0;
