@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
+import { Scope } from '@unform/core';
 import { Form } from '../../components/Form';
 import Input from '../../components/Form/Input';
 import InputMask from '../../components/Form/InputMask';
@@ -126,15 +127,17 @@ const Collaborators = () => {
 								options={roles}
 							/>
 						</Row>
-						<Row>
-							<Input name="cep" placeholder="CEP" />
-							<Input name="street" placeholder="Rua" />
-						</Row>
-						<Row>
-							<Input name="neighborhood" placeholder="Bairro" />
-							<Input name="city" placeholder="Cidade" />
-							<Input name="number" placeholder="Número" />
-						</Row>
+						<Scope path="address">
+							<Row>
+								<Input name="cep" placeholder="CEP" />
+								<Input name="street" placeholder="Rua" />
+							</Row>
+							<Row>
+								<Input name="neighborhood" placeholder="Bairro" />
+								<Input name="city" placeholder="Cidade" />
+								<Input name="number" placeholder="Número" />
+							</Row>
+						</Scope>
 						<Row>
 							<SendButton type="submit">Enviar</SendButton>
 						</Row>
