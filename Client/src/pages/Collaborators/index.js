@@ -127,6 +127,15 @@ const Collaborators = () => {
 							/>
 						</Row>
 						<Row>
+							<Input name="cep" placeholder="CEP" />
+							<Input name="street" placeholder="Rua" />
+						</Row>
+						<Row>
+							<Input name="neighborhood" placeholder="Bairro" />
+							<Input name="city" placeholder="Cidade" />
+							<Input name="number" placeholder="Número" />
+						</Row>
+						<Row>
 							<SendButton type="submit">Enviar</SendButton>
 						</Row>
 					</Column>
