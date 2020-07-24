@@ -12,14 +12,37 @@ import { Container, Column, Row, SendButton } from '../style';
 
 import collaboratorSchema from '../../validators/collaborator';
 
-import { api } from '../../services';
+import { api, getViaCEP } from '../../services';
 
 const Collaborators = () => {
 	const [initialData, setInitialData] = useState(null);
 	const [roles, setRoles] = useState([]);
+	const [cepValue, setCEPValue] = useState(null);
 	const history = useHistory();
 	const { id } = useParams();
 	const formRef = useRef(null);
+
+	const getCEP = async () => {
+		const cep = formRef.current.getFieldValue('address.cep');
+		const numberInput = formRef.current.getFieldRef('address.number');
+
+		if (cepValue === cep) return;
+
+		setCEPValue(cep);
+
+		getViaCEP(cep)
+			.then(res => {
+				const address = res;
+				formRef.current.setFieldValue('address.street', address.logradouro);
+				formRef.current.setFieldValue('address.neighborhood', address.bairro);
+				formRef.current.setFieldValue('address.city', address.localidade);
+				if (address.localidade && address.logradouro && address.bairro) {
+					numberInput.focus();
+				}
+			})
+			.catch(error => error);
+	};
+
 	const onSubmission = async data => {
 		try {
 			await collaboratorSchema.validate(data, {
@@ -129,7 +152,7 @@ const Collaborators = () => {
 						</Row>
 						<Scope path="address">
 							<Row>
-								<Input name="cep" placeholder="CEP" />
+								<Input name="cep" placeholder="CEP" onChange={() => getCEP()} />
 								<Input name="street" placeholder="Rua" />
 							</Row>
 							<Row>
