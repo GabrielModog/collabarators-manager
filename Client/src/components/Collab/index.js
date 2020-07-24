@@ -1,19 +1,12 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { removeCollaborator } from '../../store/collaborators/action';
 
-import {
-	Button,
-	EditButton,
-	DeleteButton,
-	Pagination,
-	CollabItem,
-} from './style.js';
+import CollabItem from './item';
+import { Button, Pagination } from './style.js';
 
 const Collab = ({ list, pages, pageController }) => {
-	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const deleteItem = id => {
@@ -28,39 +21,17 @@ const Collab = ({ list, pages, pageController }) => {
 					<p>Carregando...</p>
 				) : (
 					list.map(collab => (
-						<CollabItem key={collab.id}>
-							<div className="row">
-								<div>
-									<p>
-										<strong>{`${collab.name} ${collab.lastname}`}</strong>
-									</p>
-									<p>{collab.role.name}</p>
-								</div>
-								<div>
-									<p>{collab.birthday}</p>
-									<p>R$ {collab.salary}</p>
-								</div>
-							</div>
-
-							<div className="tools">
-								<EditButton
-									type="button"
-									onClick={() => history.push(`/colaborador/${collab.id}`)}
-								>
-									<i className="far fa-edit" />
-								</EditButton>
-
-								<DeleteButton
-									type="button"
-									onClick={() => {
-										deleteItem(collab.id);
-										pageController.back();
-									}}
-								>
-									<i className="far fa-trash-alt" />
-								</DeleteButton>
-							</div>
-						</CollabItem>
+						<CollabItem
+							key={collab.id}
+							id={collab.id}
+							name={collab.name}
+							lastname={collab.lastname}
+							birthday={collab.birthday}
+							salary={collab.salary}
+							role={collab.role}
+							deleteItem={deleteItem}
+							pageController={pageController}
+						/>
 					))
 				)}
 			</div>

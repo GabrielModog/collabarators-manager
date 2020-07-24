@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import StorageContext from '../../context/context';
 import Input from '../../components/Form/Input';
 
-import api from '../../services';
+import { api } from '../../services';
 import { LoginButton, LoginSection, LoginForm } from '../style';
 
 const Login = () => {

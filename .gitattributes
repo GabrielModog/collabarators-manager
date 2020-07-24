@@ -5,4 +5,10 @@ text=lf
  *.gitconfig linguist-vendored eol=lf
  *.gitignore linguist-vendored eol=lf
  *.prettierrc linguist-vendored eol=lf
+ *.html linguist-vendored eol=lf
+ *.lock linguist-vendored eol=lf
+ *.gitattributes linguist-vendored eol=lf
+ *.md linguist-vendored eol=lf
+ *.json linguist-vendored eol=lf
+ *.jsx linguist-vendored eol=lf
  CHANGELOG.md export-ignore

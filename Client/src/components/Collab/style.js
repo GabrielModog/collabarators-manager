@@ -5,7 +5,7 @@ import { Grey, Primary, Warning, Danger } from '../../styles/palette';
 
 export { Button } from '../../components/Form';
 
-export const CollabItem = styled.div`
+export const Item = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -16,6 +16,7 @@ export const CollabItem = styled.div`
 	// padding: 20px 25px;
 	overflow: hidden;
 	transition: 350ms;
+	position: relative;
 
 	&:hover {
 		transform: scale(1.01, 1.01);
