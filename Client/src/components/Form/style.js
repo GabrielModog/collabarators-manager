@@ -32,9 +32,15 @@ export const CollabInputMask = styled(InputMaskRef)`
 
 export const CollabSelect = styled(Select)`
 	width: 100%;
-	border: none;
-	margin: 5px;
-	padding: 5px 0;
+	.react-select {
+		&__control {
+			padding: 5px 0;
+
+			margin: 5px;
+			border: none;
+			box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+		}
+	}
 `;
 
 export const Button = styled.button`

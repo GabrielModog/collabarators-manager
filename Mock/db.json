@@ -14,6 +14,13 @@
       "lastname": "Di tal",
       "birthday": "21/04/1991",
       "salary": 5000,
+      "address": {
+        "cep": "52340333",
+        "number": "123",
+        "street": "Rua Alguma Coisa e Tal",
+        "neighborhood": "Alceu Valença",
+        "city": "Boa Viagem"
+      },
       "role": {
         "name": "Desenvolvedor Pleno",
         "slug": "pleno"

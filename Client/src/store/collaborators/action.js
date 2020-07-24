@@ -3,7 +3,7 @@ import {
 	REMOVE_COLLABORATOR,
 } from '../../types/collaborators';
 
-import api from '../../services';
+import { api } from '../../services';
 
 export const loadCollaborators = pagination => dispatch => {
 	api.get(`/collaborators?_page=${pagination}&_limit=3`).then(res =>
